@@ -52,9 +52,44 @@ void updateName(char toUpdate[], char name[]){
     index++;
   }
 
-void updateStats(char * statNames[], double statNums, char name[], int scores[],
+void updateStats(char * statNames[], double statNums[], char name[], int scores[],
                  int rebs[], int assists){
-  
+  if (statNums[0] > sdev(scores) || statNums[0] == -1){
+    updateName(statNames[0]);
+  }
+  if (statNums[1] > sdev(rebs) || statNums[1] == -1){
+    updateName(statNames[1]);
+  }
+  if (statNums[2] > sdev(assists) || statNums[2] == -1){
+    updateName(statNames[2]);
+  }
+  if (statNums[3] < sdev(scores) || statNums[3] == -1){
+    updateName(statNames[3]);
+  }
+  if (statNums[4] < sdev(rebs) || statNums[4] == -1){
+    updateName(statNames[4]);
+  }
+  if (statNums[5] < sdev(assists) || statNums[5] == -1){
+    updateName(statNames[5]);
+  }
+  if (statNums[6] < mean(scores) || statNums[6] == -1){
+    updateName(statNames[6]);
+  }
+  if (statNums[7] < mean(rebs) || statNums[7] == -1){
+    updateName(statNames[7]);
+  }
+  if (statNums[8] < mean(assists) || statNums[8] == -1){
+    updateName(statNames[8]);
+  }
+  if (statNums[9] > mean(scores) || statNums[9] == -1){
+    updateName(statNames[9]);
+  }
+  if (statNums[10] > mean(rebs) || statNums[10] == -1){
+    updateName(statNames[10]);
+  }
+  if (statNums[11] > mean(assists) || statNums[11] == -1){
+    updateName(statNames[11]);
+  }
 }
 
 

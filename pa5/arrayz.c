@@ -1,14 +1,16 @@
 /* Author: Jacob Davis 
 Purpose: create a library for the arrayz.c file
+math ops on arrays
 */
 #include "arrayz.h"
 #include <stdio.h>
+#include <math.h>
  
 // Return the sum of every element in values
 long sum(long values[]){
   long sum = 0;
 
-  for (int i = 1; i < values[0]; i++){
+  for (int i = 1; i <= values[0]; i++){
     sum += values[i];
   } 
   return sum;
@@ -18,7 +20,7 @@ long sum(long values[]){
 long minil(long values[]){
   long min = 101;
 
-  for (int i = 1; i < values[0]; i++){
+  for (int i = 1; i <= values[0]; i++){
     if (values[i] < min){
       min = values[i];
     }
@@ -30,7 +32,7 @@ long minil(long values[]){
 long minid(double values[]){
   double min = 101;
 
-  for (int i = 1; i < values[0]; i++){
+  for (int i = 1; i <= values[0]; i++){
     if (values[i] < min){
       min = values[i];
     }
@@ -42,7 +44,7 @@ long minid(double values[]){
 long maxil(long values[]){
   long max = -1;
 
-  for (int i = 1; i < values[0]; i++){
+  for (int i = 1; i <= values[0]; i++){
     if (values[i] > max){
       max = values[i];
     }
@@ -54,7 +56,7 @@ long maxil(long values[]){
 long maxid(double values[]){
   double max = -1;
 
-  for (int i = 1; i < values[0]; i++){
+  for (int i = 1; i <= values[0]; i++){
     if (values[i] > max){
       max = values[i];
     }
@@ -69,7 +71,7 @@ void printal(long values[]){
   if (values[0]>0){
     printf("%ld", values[1]);
   }
-  for (int i = 1; i < values[0]; i++){
+  for (int i = 1; i <= values[0]; i++){
     printf(", %ld", values[i]);
   }
   printf("\n"); 
@@ -82,7 +84,7 @@ void printad(double values[]){
   if (values[0]>0){
     printf("%lf", values[1]);
   }
-  for (int i = 1; i < values[0]; i++){
+  for (int i = 1; i <= values[0]; i++){
     printf(", %lf", values[i]);
   }
   printf("\n"); 
@@ -96,7 +98,7 @@ double mean(long values[]){
   if (values[0] == 0){
     return 0;
   }
-  for (int i = 1; i < values[0]; i++){
+  for (int i = 1; i <= values[0]; i++){
     sum += values[i];
   }
    return (double) (sum/values[0]); 
@@ -111,13 +113,14 @@ double sdev(long values[]){
   if (values[0] == 0){
     return 0;
   }
-  for (int i = 1; i < values[0]; i++){
+  for (int i = 1; i <= values[0]; i++){
     double temp = ((values[i] - meanVar) * (values[i] - meanVar));
     if (temp < 0){
       temp = temp * -1;
     }
     sumOfDevs += temp; 
   }
-  return (double) (sumOfDevs / values[0]);
+  double retVal = sumOfDevs / values[0];
+  return sqrt(retVal);
 }
 

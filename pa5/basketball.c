@@ -12,8 +12,9 @@ int getStatArrs(char name[], long scores[], long rebs[], long assists[], char li
   int lineIndex = 0;
   int statIndex = 1;
   int nameIndex = 0;
+  long temp = 0;
   while(line[lineIndex] != '\0'){
-    long temp = 0;
+    // printf("%c", line[lineIndex]);
     if (line[lineIndex] == '[' || line[lineIndex] == ','){
       if (switchStat == 1){
         scores[statIndex] = temp;
@@ -25,6 +26,7 @@ int getStatArrs(char name[], long scores[], long rebs[], long assists[], char li
         assists[statIndex] = temp;
       }
       switchStat++;
+      temp = 0;
       if (switchStat == 4){
         switchStat = 1;
         statIndex++;
@@ -54,11 +56,24 @@ void updateName(char toUpdate[], char name[]){
     toUpdate[index] = name[index];
     index++;
   }
+  toUpdate[index] = '\0';
 }
 
 
-void updateStats(char statNames[12][51], long statNums[], char name[], long scores[],
+void updateStats(char statNames[12][51], double statNums[], char name[], long scores[],
                  long rebs[], long assists[]){
+//  printf("sdev scores = %f\n", sdev(scores));
+  //printf("sdev reb = %ld\n", (long) sdev(scores));
+  //printf("sdev assists = %ld\n", (long) sdev(scores));
+//  printf("low score = %ld\n", minil(scores));
+  //printf("low reb = %ld\n", minil(rebs));
+  //printf("low assist = %ld\n", minil(assists));
+//  printf("max score = %ld\n", maxil(scores));
+  //printf("max reb = %ld\n", maxil(rebs));
+  //printf("max assist = %ld\n", maxil(assists));
+//  printf("mean scores = %ld\n", (long) mean(scores));
+  //printf("mean reb = %ld\n", (long) mean(rebs));
+  //printf("mean assist = %ld\n", (long) mean(assists));
   if (statNums[0] > sdev(scores) || statNums[0] == -1){
     updateName(statNames[0], name);
     statNums[0] = sdev(scores);
@@ -112,36 +127,22 @@ void updateStats(char statNames[12][51], long statNums[], char name[], long scor
 
 void printResults(char names[12][51]){
 printf("most consistent scorer: %s\n", names[0]);
-printf("most inconsistent scorer: %s\n", names[1]);
-printf("highest scorer: %s\n", names[2]);
-printf("lowest scorer: %s\n", names[3]);
+printf("most inconsistent scorer: %s\n", names[3]);
+printf("highest scorer: %s\n", names[6]);
+printf("lowest scorer: %s\n", names[9]);
 printf("most inconsistent rebounder: %s\n", names[4]);
-printf("most consistent rebounder: %s\n", names[5]);
-printf("highest rebounder: %s\n", names[6]);
-printf("lowest rebounder: %s\n", names[7]);
-printf("most inconsistent assister: %s\n", names[8]);
-printf("most consistent assister: %s\n", names[9]); 
-printf("lowest assister: %s\n", names[10]);
-printf("highest assister: %s\n", names[11]);
+printf("most consistent rebounder: %s\n", names[1]);
+printf("highest rebounder: %s\n", names[7]);
+printf("lowest rebounder: %s\n", names[10]);
+printf("most inconsistent assister: %s\n", names[5]);
+printf("most consistent assister: %s\n", names[2]); 
+printf("lowest assister: %s\n", names[11]);
+printf("highest assister: %s\n", names[8]);
 }
 
 int main(int argc, char * argv[]){
-/*
-  char mostConScorer[51];
-  char mostConReb[51];
-  char mostConAssister[51];
-  char leastConScorer[51];
-  char leastConReb[51];
-  char leastConAssister[51];
-  char bestScorer[51];
-  char bestReb[51];
-  char bestAssister[51];
-  char worstScorer[51];
-  char worstReb[51];
-  char worstAssister[51];
-*/
   char statNames[12][51];
-  long statNums[13];
+  double statNums[13];
   for (int i = 0; i < 13; i++){
     statNums[i] = -1;
   }
@@ -152,9 +153,12 @@ int main(int argc, char * argv[]){
     long rebs[102];
     long assists[102];
     getStatArrs(name, scores, rebs, assists, buffer);
+/*    printf("%s\n", name);
+    for (int i = 0; i <= scores[0]; i++){
+      printf("%ld\n", scores[i]);
+    } */
     updateStats(statNames, statNums, name, scores, rebs, assists);
   }
   printResults(statNames);
-  printf("LETS GOOOOOOOO");
   return 0;
 }

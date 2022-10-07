@@ -44,6 +44,11 @@ int getStatArrs(char name[], int scores[], int rebs[], int assists[], char line[
 }
 
 
+void updateStats(char * names[], double statNums, char name[], int scores[],
+                 int rebs[], int assists){
+
+}
+
 
 int main(int argc, char * argv[]){
 /*
@@ -61,7 +66,7 @@ int main(int argc, char * argv[]){
   char worstAssister[51];
 */
   char statNames[12][51];
-  int statNums[13];
+  double statNums[13];
   for (int i = 0; i < 13; i++){
     statNums[i] = -1;
   }
@@ -71,7 +76,8 @@ int main(int argc, char * argv[]){
     int scores[101];
     int rebs[101];
     int assists[101];
-    getStatArrs(name, scores, rebs, assists, buffer);   
+    getStatArrs(name, scores, rebs, assists, buffer);
+    updateStats(statNames, statNums, name, scores, rebs, assists);
   }
   printf("LETS GOOOOOOOO");
   return 0;

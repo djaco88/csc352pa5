@@ -40,13 +40,21 @@ int getStatArrs(char name[], int scores[], int rebs[], int assists[], char line[
     }
     lineIndex++;      
   }
+  name[nameIndex] == '\0';
   return 0;
 }
 
 
-void updateStats(char * names[], double statNums, char name[], int scores[],
-                 int rebs[], int assists){
+void updateName(char toUpdate[], char name[]){
+  int index = 0;
+  while (name[index] != '\0'){
+    toUpdate[index] = name[index];
+    index++;
+  }
 
+void updateStats(char * statNames[], double statNums, char name[], int scores[],
+                 int rebs[], int assists){
+  
 }
 
 

@@ -13,8 +13,8 @@ int getStatArrs(char name[], int scores[], int rebs[], int assists[], char line[
   int statIndex = 0;
   int nameIndex = 0;
   while(line[lineIndex] != '\0'){
-    temp = 0;
-    if (line[LineIndex] == '[' || line[lineIndex] == ','){
+    int temp = 0;
+    if (line[lineIndex] == '[' || line[lineIndex] == ','){
       if (switchStat == 1){
         scores[statIndex] = temp;
       }

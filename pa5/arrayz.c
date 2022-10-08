@@ -93,15 +93,15 @@ void printad(double values[]){
 // Return the mean (average) of the elements in values
 // Note: return a double, the result may not be a whole number.
 double mean(long values[]){
-  long sum = 0;
+//  long sum = 0;
 
   if (values[0] == 0){
     return 0;
   }
-  for (int i = 1; i <= values[0]; i++){
-    sum += values[i];
-  }
-   return (double) (sum/values[0]); 
+//  for (int i = 1; i <= values[0]; i++){
+//    sum += values[i];
+//  }
+   return (double) (sum(values)/values[0]); 
 }
  
 // Return the standard deviation of the elements in values

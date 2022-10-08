@@ -4,6 +4,7 @@ players
 */
 #include <stdio.h>
 #include "arrayz.h"
+#include <stdlib.h>
 
 
 
@@ -146,8 +147,12 @@ int main(int argc, char * argv[]){
   for (int i = 0; i < 13; i++){
     statNums[i] = -1;
   }
+
+  FILE* playersData = fopen(argv[1], "r");
+  if (playersData == NULL){ fprintf(stderr, "bad\n"); return 1;}
+
   char buffer[1051];
-  while (fgets(buffer, 1050, stdin) != NULL){
+  while (fgets(buffer,1050,playersData) != NULL){
     char name[51];
     long scores[102];
     long rebs[102];
@@ -159,6 +164,11 @@ int main(int argc, char * argv[]){
     } */
     updateStats(statNames, statNums, name, scores, rebs, assists);
   }
+//  FILE* result = fopen("sum.txt","w");
+  fflush(playersData);
+  fclose(playersData);
+//  while (fgets(buffer, 1050, stdin) != NULL){
+//  }
   printResults(statNames);
   return 0;
 }

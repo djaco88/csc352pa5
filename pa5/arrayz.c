@@ -18,50 +18,50 @@ long sum(long values[]){
  
 // Return the index of the minimum value in values
 long minil(long values[]){
-  long min = 101;
+  long index = 1;
 
   for (int i = 1; i <= values[0]; i++){
-    if (values[i] < min){
-      min = values[i];
+    if (values[i] < values[index]){
+      index = i;
     }
   } 
- return min; 
+ return index; 
 }
  
 // Return the index of the minimum value in values
 long minid(double values[]){
-  double min = 101;
+  long index = 1;
 
   for (int i = 1; i <= values[0]; i++){
-    if (values[i] < min){
-      min = values[i];
+    if (values[i] < values[index]){
+      index = i;
     }
   } 
- return (double) min; 
+ return index; 
 }
  
 // Return the index of the maximum value in values
 long maxil(long values[]){
-  long max = -1;
+  long index = 1;
 
   for (int i = 1; i <= values[0]; i++){
-    if (values[i] > max){
-      max = values[i];
+    if (values[i] > values[index]){
+      index = i;
     }
   } 
- return max; 
+ return index; 
 }
  
 // Return the index of the maximum value in values
 long maxid(double values[]){
-  double max = -1;
+  long index = 1;
 
   for (int i = 1; i <= values[0]; i++){
-    if (values[i] > max){
-      max = values[i];
+    if (values[i] > values[index]){
+      index = i;
     }
   } 
- return (long) max; 
+ return index; 
 }
  
 // Print the elements in values

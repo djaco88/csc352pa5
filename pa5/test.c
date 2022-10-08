@@ -1,3 +1,6 @@
+/* Author: Jacob Davis
+Purpose: to test the arrayz.c file
+*/
 #include <stdio.h>
 #include "arrayz.h"
 #include <stdlib.h>

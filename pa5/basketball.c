@@ -1,6 +1,6 @@
 /* Author: Jacob Davis
 Purpose: calculate and display stats for basketball
-players
+players given a data file
 */
 #include <stdio.h>
 #include "arrayz.h"
@@ -8,12 +8,19 @@ players
 
 
 
+
+/* This fuction will take in the current line and extract all the necessary information
+it will build the name array, scores array, rebounds array, and assists array. it 
+will return nothing since the array pointers are passed into it
+*/
 int getStatArrs(char name[], long scores[], long rebs[], long assists[], char line[]){
   int switchStat = 0;
   int lineIndex = 0;
   int statIndex = 1;
   int nameIndex = 0;
   long temp = 0;
+  
+  //loop through entire line, sorting data into the appropriate array
   while(line[lineIndex] != '\0'){
     // printf("%c", line[lineIndex]);
     if (line[lineIndex] == '[' || line[lineIndex] == ',' || line[lineIndex + 2] == '\0'){
@@ -46,6 +53,7 @@ int getStatArrs(char name[], long scores[], long rebs[], long assists[], char li
     }
     lineIndex++;      
   }
+
   scores[0] = statIndex;
   rebs[0] = statIndex;
   assists[0] = statIndex;
@@ -54,6 +62,11 @@ int getStatArrs(char name[], long scores[], long rebs[], long assists[], char li
 }
 
 
+
+
+/* Updates the char name[] that keeps track of the 
+names of the people associated with the significant stats
+*/
 void updateName(char toUpdate[], char name[]){
   int index = 0;
   while (name[index] != '\0'){
@@ -64,20 +77,13 @@ void updateName(char toUpdate[], char name[]){
 }
 
 
+
+
+/* Goes through every significant stat in the statNums[] and updates values
+as necessary
+*/
 void updateStats(char statNames[12][51], double statNums[], char name[], long scores[],
                  long rebs[], long assists[]){
-//  printf("sdev scores = %f\n", sdev(scores));
-  //printf("sdev reb = %ld\n", (long) sdev(scores));
-  //printf("sdev assists = %ld\n", (long) sdev(scores));
-//  printf("low score = %ld\n", minil(scores));
-  //printf("low reb = %ld\n", minil(rebs));
-  //printf("low assist = %ld\n", minil(assists));
-//  printf("max score = %ld\n", maxil(scores));
-  //printf("max reb = %ld\n", maxil(rebs));
-  //printf("max assist = %ld\n", maxil(assists));
-//  printf("mean scores = %ld\n", (long) mean(scores));
-  //printf("mean reb = %ld\n", (long) mean(rebs));
-  //printf("mean assist = %ld\n", (long) mean(assists));
   if (statNums[0] > sdev(scores) || statNums[0] == -1){
     updateName(statNames[0], name);
     statNums[0] = sdev(scores);
@@ -129,6 +135,10 @@ void updateStats(char statNames[12][51], double statNums[], char name[], long sc
 }
 
 
+
+
+/* Prints out the results
+*/
 void printResults(char names[12][51]){
 printf("most consistent scorer: %s\n", names[0]);
 printf("most inconsistent scorer: %s\n", names[3]);
@@ -144,6 +154,11 @@ printf("lowest assister: %s\n", names[11]);
 printf("highest assister: %s\n", names[8]);
 }
 
+
+
+
+/* MAIN: opens and reads file, calls necessary functions
+*/
 int main(int argc, char * argv[]){
   char statNames[12][51];
   double statNums[13];

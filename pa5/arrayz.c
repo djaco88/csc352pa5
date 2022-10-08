@@ -1,6 +1,6 @@
 /* Author: Jacob Davis 
 Purpose: create a library for the arrayz.c file
-math ops on arrays
+math ops and print ops on long and double arrays
 */
 #include "arrayz.h"
 #include <stdio.h>
@@ -18,6 +18,9 @@ long sum(long values[]){
  
 // Return the index of the minimum value in values
 long minil(long values[]){
+  if (values[0] == 0){
+    return 0;
+  }
   long index = 1;
 
   for (int i = 1; i <= values[0]; i++){
@@ -30,6 +33,9 @@ long minil(long values[]){
  
 // Return the index of the minimum value in values
 long minid(double values[]){
+  if (values[0] == 0){
+    return 0;
+  }
   long index = 1;
 
   for (int i = 1; i <= values[0]; i++){
@@ -42,6 +48,9 @@ long minid(double values[]){
  
 // Return the index of the maximum value in values
 long maxil(long values[]){
+  if (values[0] == 0){
+    return 0;
+  }
   long index = 1;
 
   for (int i = 1; i <= values[0]; i++){
@@ -54,6 +63,9 @@ long maxil(long values[]){
  
 // Return the index of the maximum value in values
 long maxid(double values[]){
+  if (values[0] == 0){
+    return 0;
+  }
   long index = 1;
 
   for (int i = 1; i <= values[0]; i++){
@@ -93,14 +105,9 @@ void printad(double values[]){
 // Return the mean (average) of the elements in values
 // Note: return a double, the result may not be a whole number.
 double mean(long values[]){
-//  long sum = 0;
-
   if (values[0] == 0){
     return 0;
   }
-//  for (int i = 1; i <= values[0]; i++){
-//    sum += values[i];
-//  }
    return (double) (sum(values)/values[0]); 
 }
  

@@ -71,7 +71,7 @@ void printal(long values[]){
   if (values[0]>0){
     printf("%ld", values[1]);
   }
-  for (int i = 1; i <= values[0]; i++){
+  for (int i = 2; i <= values[0]; i++){
     printf(", %ld", values[i]);
   }
   printf("\n"); 
@@ -84,7 +84,7 @@ void printad(double values[]){
   if (values[0]>0){
     printf("%lf", values[1]);
   }
-  for (int i = 1; i <= values[0]; i++){
+  for (int i = 2; i <= values[0]; i++){
     printf(", %lf", values[i]);
   }
   printf("\n"); 

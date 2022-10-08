@@ -16,7 +16,7 @@ int getStatArrs(char name[], long scores[], long rebs[], long assists[], char li
   long temp = 0;
   while(line[lineIndex] != '\0'){
     // printf("%c", line[lineIndex]);
-    if (line[lineIndex] == '[' || line[lineIndex] == ','){
+    if (line[lineIndex] == '[' || line[lineIndex] == ',' || line[lineIndex + 2] == '\0'){
       if (switchStat == 1){
         scores[statIndex] = temp;
       }
@@ -25,6 +25,9 @@ int getStatArrs(char name[], long scores[], long rebs[], long assists[], char li
       }
       if (switchStat == 3){
         assists[statIndex] = temp;
+      }
+      if (line[lineIndex + 2] == '\0'){
+        break;
       }
       switchStat++;
       temp = 0;
@@ -159,8 +162,8 @@ int main(int argc, char * argv[]){
     long assists[102];
     getStatArrs(name, scores, rebs, assists, buffer);
 /*    printf("%s\n", name);
-    for (int i = 0; i <= scores[0]; i++){
-      printf("%ld\n", scores[i]);
+    for (int i = 0; i <= assists[0]; i++){
+      printf("%ld\n", assists[i]);
     } */
     updateStats(statNames, statNums, name, scores, rebs, assists);
   }
